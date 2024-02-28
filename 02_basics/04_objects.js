@@ -32,6 +32,26 @@ const obj3 = Object.assign({},obj1,obj2) // {} <=this is target where source obj
 
 //alternate way
 const obj4 = {...obj1,...obj2}
-console.log(obj4);
+//console.log(obj4);
 
-f
+
+//how to get keys of an object to iterate over them
+
+// console.log(Object.keys(tinderUser)) // array of keys
+// console.log(Object.values(tinderUser)) // array of values
+// console.log(Object.entries(tinderUser)) // array of key-value pair
+// console.log(tinderUser.hasOwnProperty("isLoggedIn")) // to check whether the property exist or not
+
+//destructuring of objects
+const course = {
+    courseName : "reactjs course",
+    price:999,
+    courseInstructor: "Nitesh"
+}
+
+const {courseName,price,courseInstructor} = course //destructuring
+console.log(courseName,price,courseInstructor);
+
+
+
+
