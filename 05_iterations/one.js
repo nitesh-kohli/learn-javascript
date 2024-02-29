@@ -74,3 +74,5 @@ const coding = ["js","python","c++","java","swift"]
 coding.forEach( (item,index,array) =>{
     console.log(item,index,array);
 } )
+
+//for-each do not return values
