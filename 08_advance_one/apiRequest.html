@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+0	UNSENT	Client has been created. open() not called yet.<br/>
+1	OPENED	open() has been called.<br/>
+2	HEADERS_RECEIVED	send() has been called, and headers and status are available.<br/>
+3	LOADING	Downloading; responseText holds partial data.<br/>
+4	DONE	The operation is complete.
+    <!-- <div>
+        <h1>email: <span class="email">loading...</span></h1>
+        <h1>gender: <span class="gender">loading...</span></h1>
+        <h1>name: <span class="name">loading...</span></h1>
+    </div> -->
+
+    <div class="card">
+        <img src="" alt="Avatar">
+        <div class="container">
+            <h4><b>Name : <span class="name">loading...</span></b></h4> 
+            <p>Gender: <span class="gender">loading...</span></p> 
+        </div>
+    </div>
+
+</body>
+
+<script>
+    const requestUrl = "https://randomuser.me/api/";
+    const xhr = new XMLHttpRequest();
+    xhr.open('GET',requestUrl)
+    xhr.onreadystatechange = function(){
+        console.log(xhr.readyState);
+        if(xhr.readyState === 4){
+            const data = JSON.parse(this.responseText) //string converted into json
+            console.log(data.results[0].picture.medium);
+            // document.querySelector('.email').innerHTML = data.results[0].email;
+            document.querySelector('.gender').innerHTML = data.results[0].gender;
+            document.querySelector('.name').innerHTML = `${data.results[0].name.title} ${data.results[0].name.first} ${data.results[0].name.last}`;
+
+            const x = document.querySelector("IMG");
+            const imgUrl = data.results[0].picture.medium;
+            x.setAttribute("src", imgUrl);
+        }
+    }
+
+    xhr.send()
+</script>
+</html>
