@@ -13,7 +13,23 @@
     class React{
         constructor(){
             this.library = 'React'
+            this.server = 'https://localhost:3000'
+
+            //requirement
+            //without using bind we do not have reference of above props of constructor
+            //we have to bind this
+            document.querySelector('button').addEventListener('click',this.handleClick.bind(this))
+        }
+
+        handleClick(){
+            console.log("button clicked");
+            console.log(this); // this have refference of button or button mai server ka to kuch hai nhi
+
         }
     }
+
+    const app = new React()
+    console.log(app.library);
+    console.log(app.server);
 </script>
 </html>

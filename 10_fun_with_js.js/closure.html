@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>closure</title>
+</head>
+<body>
+
+    <button id="orange">orange</button>
+    <button id="green">green</button>
+    
+</body>
+<!-- <script>
+    // function init() {
+    //     var name = "Mozilla"; 
+    //     function displayName() {
+    //         console.log(name); 
+    //     }
+    //     displayName();
+    // }
+    // init();
+
+    function makeFunc() {
+        const name = "Mozilla";
+        function displayName() {
+            console.log(name);
+        }
+        //so here outer scope means lexical scope will also get return with displayName
+        return displayName;
+    }
+
+    const myFunc = makeFunc();
+    myFunc();
+
+
+</script> -->
+
+<script>
+    // document.querySelector('#orange').addEventListener('click',function(){
+    //     document.body.style.backgroundColor = 'orange';
+    // })
+    // document.querySelector('#green').addEventListener('click',function(){
+    //     document.body.style.backgroundColor = 'green';
+    // })
+
+    //if there are 500 buttons and for every button click there are 500 background color changing
+    //we cannot write like above because there will be lot of repetetion and we will not able to 
+    // follow DRY principle.
+
+    //another approach
+    function clickHandler(color){
+        // document.body.style.backgroundColor = `${color}`;
+        return function(){
+            document.body.style.backgroundColor = `${color}`;
+        }
+    }
+
+    document.getElementById('orange').onclick = clickHandler('orange') 
+    document.querySelector('#green').onclick = clickHandler('green') 
+    //this will also not work
+    //because we are executing the function so function get executed without clicking button
+
+
+
+</script>
+</html>
